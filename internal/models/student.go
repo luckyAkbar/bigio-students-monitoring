@@ -17,11 +17,13 @@ func (i *CreateStudentInput) Validate() error {
 }
 
 type StudentUsecase interface {
-	GetGradeBySubjectID(ctxt context.Context, subjectID int64) (int, error)
+	GetGradeBySubjectID(ctx context.Context, subjectID int64) (*Grade, error)
+	GetAllGrade(ctx context.Context) ([]Grade, error)
 	FindByID(ctxt context.Context, id int64) (*Student, error)
 }
 
 type StudentRepository interface {
-	GetGradeBySubjectID(ctxt context.Context, subjectID int64) (*Grade, error)
+	FindByStudentAndSubjectID(ctx context.Context, studentID, subjectID int64) (*Grade, error)
+	GetAllGrade(ctx context.Context, id int64) ([]Grade, error)
 	FindByID(ctxt context.Context, id int64) (*Student, error)
 }
