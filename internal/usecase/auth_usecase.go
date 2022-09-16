@@ -41,7 +41,7 @@ func (u *authUsecase) LoginByIDAndPassword(ctx context.Context, id int64, passwo
 		break
 	}
 
-	if helper.IsHashedStringMatch([]byte(password), []byte(user.Password)) {
+	if !helper.IsHashedStringMatch([]byte(password), []byte(user.Password)) {
 		logger.Info("Failed login process detected")
 		return nil, ErrUnauthorized
 	}
