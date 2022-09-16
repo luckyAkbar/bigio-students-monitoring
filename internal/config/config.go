@@ -3,6 +3,13 @@ package config
 import (
 	"fmt"
 	"os"
+	"time"
+)
+
+var (
+	DefaultTokenLength = 35
+
+	DefaultAccessTokenExpiry = time.Hour * 24 * 7
 )
 
 func Env() string {
@@ -21,4 +28,13 @@ func PostgresDSN() string {
 	port := os.Getenv("PG_PORT")
 
 	return fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", host, user, pw, db, port)
+}
+
+func ServerPort() string {
+	cfg := os.Getenv("SERVER_PORT")
+	if cfg == "" {
+		return "5000"
+	}
+
+	return cfg
 }
