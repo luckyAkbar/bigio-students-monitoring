@@ -10,7 +10,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func (s *Service) LoginByIDAndPassword() echo.HandlerFunc {
+func (s *Service) loginByIDAndPassword() echo.HandlerFunc {
 	return func(ctx echo.Context) error {
 		input := &models.LoginByIDAndPasswordInput{}
 		if err := ctx.Bind(input); err != nil {
