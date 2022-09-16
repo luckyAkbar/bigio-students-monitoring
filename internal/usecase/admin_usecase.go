@@ -100,6 +100,11 @@ func (u *adminUsecase) CreateStudent(ctx context.Context, input *models.CreateSt
 		Role:      models.RoleStudent,
 	}
 
+	if err := newUser.Encrypt(); err != nil {
+		logger.Error(err)
+		return nil, ErrInternal
+	}
+
 	if err := u.adminRepo.CreateStudent(ctx, student, newUser); err != nil {
 		logger.Error(err)
 		return nil, ErrInternal
