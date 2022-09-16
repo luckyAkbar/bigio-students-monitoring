@@ -16,6 +16,7 @@ type AdminUsecase interface {
 
 type AdminRepository interface {
 	FindByID(ctx context.Context, id int64) (*Admin, error)
+	Create(ctx context.Context, admin *Admin) error
 	CreateTeacher(ctx context.Context, teacher *Teacher) error
 	CreateStudent(ctx context.Context, student *Student) error
 	CreateSubject(ctx context.Context, subject *Subject) error
