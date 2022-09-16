@@ -32,5 +32,22 @@ func (r *userRepository) Create(ctx context.Context, user *models.User) error {
 }
 
 func (r *userRepository) FindByID(ctx context.Context, id int64) (*models.User, error) {
-	return nil, nil
+	logger := logrus.WithFields(logrus.Fields{
+		"ctx": utils.DumpIncomingContext(ctx),
+		"id": id,
+	})
+
+	user := &models.User{}
+	err := r.db.WithContext(ctx).Model(&models.User{}).
+		Where("id = ?", id).Take(user).Error
+	
+	switch err {
+	default:
+		logger.Error(err)
+		return nil, err
+	case gorm.ErrRecordNotFound:
+		return nil, ErrNotFound
+	case nil:
+		return user, nil
+	}
 }

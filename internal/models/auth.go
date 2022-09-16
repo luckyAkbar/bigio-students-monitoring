@@ -12,6 +12,11 @@ var (
 	RoleTeacher Role = "TEACHER"
 )
 
+type LoginByIDAndPasswordInput struct {
+	ID int64 `json:"id"`
+	Password string `json:"password"`
+}
+
 type AuthUsecase interface {
-	LoginByIDAndRole(ctx context.Context, id int64, role Role) (*Session, error)
+	LoginByIDAndPassword(ctx context.Context, id int64, password string) (*Session, error)
 }
