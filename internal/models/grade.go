@@ -23,7 +23,6 @@ type Grade struct {
 
 type CreateGradeInput struct {
 	StudentID int64 `json:"student_id" validate:"required"`
-	TeacherID int64 `json:"teacher_id" validate:"required"`
 	SubjectID int64 `json:"subject_id" validate:"required"`
 	Mark      Mark  `json:"mark" validate:"required"`
 	Value     int   `json:"value" validate:"required"`
