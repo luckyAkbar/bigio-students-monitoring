@@ -34,4 +34,5 @@ func (i *CreateGradeInput) Validate() error {
 
 type GradeRepository interface {
 	FindByID(ctx context.Context, id int64) (*Grade, error)
+	Create(ctx context.Context, grade *Grade) error
 }
