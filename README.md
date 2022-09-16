@@ -6,15 +6,15 @@ I want to say thanks to all BIG IO teams that give me chance to join your Backen
 
 ## Tech Stacks
 
-1. Go Programming Language -> [golang]("https://go.dev/")
-2. Echo HTTP Framework -> [echo]("https://echo.labstack.com/")
-3. GORM Object Relational Mapper -> [gorm]("https://gorm.io/index.html")
-4. PostgreSQL SQL-based database server-> [postgres]("https://www.postgresql.org/")
-5. Docker container -> [docker]("https://www.docker.com/")
-6. Nginx reverse proxy -> [nginx]("https://www.nginx.com/")
-7. Ubuntu Operating System -> [ubuntu]("https://ubuntu.com/")
-8. AWS EC2 Instance -> [aws]("https://aws.amazon.com/")
-9. Let's Encrypt CERBOT -> [certbot]("https://certbot.eff.org/")
+1. Go Programming Language -> [golang](https://go.dev/)
+2. Echo HTTP Framework -> [echo](https://echo.labstack.com/)
+3. GORM Object Relational Mapper -> [gorm](https://gorm.io/index.html)
+4. PostgreSQL SQL-based database server-> [postgres](https://www.postgresql.org/)
+5. Docker container -> [docker](https://www.docker.com/)
+6. Nginx reverse proxy -> [nginx](https://www.nginx.com/)
+7. Ubuntu Operating System -> [ubuntu](https://ubuntu.com/)
+8. AWS EC2 Instance -> [aws](https://aws.amazon.com/)
+9. Let's Encrypt CERBOT -> [certbot](https://certbot.eff.org/)
 
 ## What's provided by this app?
 
@@ -60,7 +60,7 @@ Sure. You can use my request collection using Insomnia. The collection are avail
 
 ## I have a question, can i have your contact?
 
-You open an issue on this Github repository.
+You can open an issue on this Github repository.
 
 ## I dont want to install this app by myself. Do you have a deployed server?
 
