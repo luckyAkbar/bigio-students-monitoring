@@ -20,7 +20,23 @@ func NewSubjectRepository(db *gorm.DB) models.SubjectRepository {
 }
 
 func (r *subjectRepo) FindByID(ctx context.Context, id int64) (*models.Subject, error) {
-	return nil, nil
+	logger := logrus.WithFields(logrus.Fields{
+		"ctx": utils.DumpIncomingContext(ctx),
+		"id":  id,
+	})
+
+	subject := &models.Subject{}
+	err := r.db.WithContext(ctx).Model(&models.Subject{}).Where("id = ?", id).Take(subject).Error
+
+	switch err {
+	default:
+		logger.Error(err)
+		return nil, err
+	case gorm.ErrRecordNotFound:
+		return nil, ErrNotFound
+	case nil:
+		return subject, nil
+	}
 }
 
 func (r *subjectRepo) Create(ctx context.Context, subject *models.Subject) error {
