@@ -3,6 +3,7 @@ package models
 import "context"
 
 type Mark = string
+
 var (
 	MarkA Mark = "A"
 	MarkB Mark = "B"
@@ -12,20 +13,24 @@ var (
 )
 
 type Grade struct {
-	ID int64 `json:"id"`
+	ID        int64 `json:"id"`
 	StudentID int64 `json:"student_id"`
 	TeacherID int64 `json:"teacher_id"`
 	SubjectID int64 `json:"subject_id"`
-	Mark Mark `json:"mark"`
-	Value int `json:"value"`
+	Mark      Mark  `json:"mark"`
+	Value     int   `json:"value"`
 }
 
 type CreateGradeInput struct {
-	StudentID int64 `json:"student_id"`
-	TeacherID int64 `json:"teacher_id"`
-	SubjectID int64 `json:"subject_id"`
-	Mark Mark `json:"mark"`
-	Value int `json:"value"`
+	StudentID int64 `json:"student_id" validate:"required"`
+	TeacherID int64 `json:"teacher_id" validate:"required"`
+	SubjectID int64 `json:"subject_id" validate:"required"`
+	Mark      Mark  `json:"mark" validate:"required"`
+	Value     int   `json:"value" validate:"required"`
+}
+
+func (i *CreateGradeInput) Validate() error {
+	return validator.Struct(i)
 }
 
 type GradeRepository interface {

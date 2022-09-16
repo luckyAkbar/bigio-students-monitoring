@@ -3,7 +3,7 @@ package models
 import "context"
 
 type Admin struct {
-	ID int64 `json:"id"`
+	ID   int64  `json:"id"`
 	Name string `json:"name"`
 }
 
@@ -17,7 +17,7 @@ type AdminUsecase interface {
 type AdminRepository interface {
 	FindByID(ctx context.Context, id int64) (*Admin, error)
 	Create(ctx context.Context, admin *Admin) error
-	CreateTeacher(ctx context.Context, teacher *Teacher) error
-	CreateStudent(ctx context.Context, student *Student) error
+	CreateTeacher(ctx context.Context, teacher *Teacher, user *User) error
+	CreateStudent(ctx context.Context, student *Student, user *User) error
 	CreateSubject(ctx context.Context, subject *Subject) error
 }
