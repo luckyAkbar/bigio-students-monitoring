@@ -39,8 +39,12 @@ func server(cmd *cobra.Command, args []string) {
 
 	sessionRepo := repository.NewSessionRepo(db.PostgresDB)
 	userRepo := repository.NewUserRepository(db.PostgresDB)
+	adminRepo := repository.NewAdminRepository(db.PostgresDB)
+	teacherRepo := repository.NewTeacherRepository(db.PostgresDB)
+	subjectRepo := repository.NewSubjectRepository(db.PostgresDB)
 
 	authUsecase := usecase.NewAuthUsecase(sessionRepo, userRepo)
+	adminUsecase := usecase.NewAdminUsecase(adminRepo, teacherRepo, subjectRepo)
 
 	authMiddleware := auth.NewMiddleware(sessionRepo, userRepo)
 
@@ -54,7 +58,7 @@ func server(cmd *cobra.Command, args []string) {
 
 	RESTGroup := HTTPServer.Group("rest")
 
-	rest.NewRESTService(RESTGroup, authUsecase)
+	rest.NewRESTService(RESTGroup, authUsecase, adminUsecase)
 
 	if err := HTTPServer.Start(fmt.Sprintf(":%s", config.ServerPort())); err != nil {
 		logrus.Fatal("unable to start server. reason: ", err.Error())
