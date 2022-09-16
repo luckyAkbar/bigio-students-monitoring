@@ -17,11 +17,9 @@ func (i *CreateTeacherInput) Validate() error {
 }
 
 type TeacherUsecase interface {
-	FindByID(ctx context.Context, id int64) (*Teacher, error)
 	GradeByStudentID(ctx context.Context, input *CreateGradeInput) (*Grade, error)
 }
 
 type TeacherRepository interface {
 	FindByID(ctx context.Context, id int64) (*Teacher, error)
-	GradeByStudentID(ctx context.Context, grade *Grade) error
 }

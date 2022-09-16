@@ -28,6 +28,5 @@ func (s *Session) IsAccessTokenExpired() bool {
 
 type SessionRepository interface {
 	Create(ctx context.Context, session *Session) error
-	FindByID(ctx context.Context, sessionID int64) (*Session, error)
 	FindByAccessToken(ctx context.Context, token string) (*Session, error)
 }

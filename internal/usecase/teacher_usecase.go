@@ -24,10 +24,6 @@ func NewTeacherUsecase(studentRepo models.StudentRepository, subjectRepo models.
 	}
 }
 
-func (u *teacherUsecase) FindByID(ctx context.Context, id int64) (*models.Teacher, error) {
-	return nil, nil
-}
-
 func (u *teacherUsecase) GradeByStudentID(ctx context.Context, input *models.CreateGradeInput) (*models.Grade, error) {
 	logger := logrus.WithFields(logrus.Fields{
 		"ctx":   utils.DumpIncomingContext(ctx),

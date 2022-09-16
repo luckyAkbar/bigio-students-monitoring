@@ -25,10 +25,6 @@ func NewAdminUsecase(adminRepo models.AdminRepository, teacherRepo models.Teache
 	}
 }
 
-func (u *adminUsecase) FindByID(ctx context.Context, id int64) (*models.Admin, error) {
-	return nil, nil
-}
-
 func (u *adminUsecase) CreateTeacher(ctx context.Context, input *models.CreateTeacherInput) (*models.Teacher, error) {
 	logger := logrus.WithFields(logrus.Fields{
 		"ctx":   utils.DumpIncomingContext(ctx),

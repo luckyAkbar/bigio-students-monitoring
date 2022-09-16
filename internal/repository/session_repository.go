@@ -33,10 +33,6 @@ func (r *sessionRepo) Create(ctx context.Context, session *models.Session) error
 	return nil
 }
 
-func (r *sessionRepo) FindByID(ctx context.Context, id int64) (*models.Session, error) {
-	return nil, nil
-}
-
 func (r *sessionRepo) FindByAccessToken(ctx context.Context, accessToken string) (*models.Session, error) {
 	logger := logrus.WithFields(logrus.Fields{
 		"ctx":   utils.DumpIncomingContext(ctx),
