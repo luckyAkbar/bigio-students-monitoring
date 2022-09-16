@@ -3,6 +3,7 @@ package console
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/kumparan/go-utils"
@@ -15,10 +16,10 @@ import (
 )
 
 var initAdminCMD = &cobra.Command{
-	Use: "init-admin",
+	Use:   "init-admin",
 	Short: "init admin user",
-	Long: "create a new admin-level user",
-	Run: admin,
+	Long:  "create a new admin-level user",
+	Run:   admin,
 }
 
 func init() {
@@ -30,8 +31,8 @@ func admin(cmd *cobra.Command, args []string) {
 		logrus.Fatal("Args - 1 is required as admin name and Args - 2 is required as admin password")
 	}
 
-	name := args[0]
-	password := args[1]
+	name := strings.TrimSpace(args[0])
+	password := strings.TrimSpace(args[1])
 	if password == "" || name == "" {
 		logrus.Fatal("username and password is required is required as admin credentials")
 	}
@@ -39,10 +40,10 @@ func admin(cmd *cobra.Command, args []string) {
 	now := time.Now()
 
 	user := &models.User{
-		ID: utils.GenerateID(),
-		Password: password,
+		ID:        utils.GenerateID(),
+		Password:  password,
 		CreatedAt: now,
-		Role: models.RoleAdmin,
+		Role:      models.RoleAdmin,
 	}
 
 	if err := user.Encrypt(); err != nil {
@@ -50,7 +51,7 @@ func admin(cmd *cobra.Command, args []string) {
 	}
 
 	admin := &models.Admin{
-		ID: user.ID,
+		ID:   user.ID,
 		Name: name,
 	}
 
