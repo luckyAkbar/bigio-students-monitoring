@@ -10,14 +10,16 @@ type Service struct {
 	authUsecase    models.AuthUsecase
 	adminUsecase   models.AdminUsecase
 	teacherUsecase models.TeacherUsecase
+	studentUsecase models.StudentUsecase
 }
 
-func NewRESTService(group *echo.Group, authUsecase models.AuthUsecase, adminUsecase models.AdminUsecase, teacherUsecase models.TeacherUsecase) {
+func NewRESTService(group *echo.Group, authUsecase models.AuthUsecase, adminUsecase models.AdminUsecase, teacherUsecase models.TeacherUsecase, studentUsecase models.StudentUsecase) {
 	service := &Service{
 		group:          group,
 		authUsecase:    authUsecase,
 		adminUsecase:   adminUsecase,
 		teacherUsecase: teacherUsecase,
+		studentUsecase: studentUsecase,
 	}
 
 	service.InitRoutes()
@@ -27,6 +29,7 @@ func (s *Service) InitRoutes() {
 	s.initAuthService()
 	s.initAdminService()
 	s.initTeacherService()
+	s.initStudentService()
 }
 
 func (s *Service) initAuthService() {
@@ -41,4 +44,9 @@ func (s *Service) initAdminService() {
 
 func (s *Service) initTeacherService() {
 	s.group.POST("/teacher/create/grade/", s.gradeByStudentID())
+}
+
+func (s *Service) initStudentService() {
+	s.group.GET("/student/grade/", s.getAllGrades())
+	s.group.GET("/student/grade/:subjectID/", s.getGradeBySubjectID())
 }
