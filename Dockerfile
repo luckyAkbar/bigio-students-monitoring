@@ -24,4 +24,4 @@ WORKDIR /app/bin
 
 COPY .env .
 
-CMD["./main", "server"]
+CMD ["./main", "server"]
