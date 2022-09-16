@@ -60,7 +60,7 @@ Sure. You can use my request collection using Insomnia. The collection are avail
 
 ## I have a question, can i have your contact?
 
-You open an issue on this Github repository.
+You can open an issue on this Github repository.
 
 ## I dont want to install this app by myself. Do you have a deployed server?
 
