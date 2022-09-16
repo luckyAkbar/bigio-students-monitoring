@@ -19,10 +19,6 @@ func NewGradeRepository(db *gorm.DB) models.GradeRepository {
 	}
 }
 
-func (r *gradeRepo) FindByID(ctx context.Context, id int64) (*models.Grade, error) {
-	return nil, nil
-}
-
 func (r *gradeRepo) Create(ctx context.Context, grade *models.Grade) error {
 	logger := logrus.WithFields(logrus.Fields{
 		"ctx":   utils.DumpIncomingContext(ctx),

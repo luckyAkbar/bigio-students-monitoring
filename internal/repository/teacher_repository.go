@@ -39,7 +39,3 @@ func (r *teacherRepo) FindByID(ctx context.Context, id int64) (*models.Teacher, 
 		return teacher, nil
 	}
 }
-
-func (r *teacherRepo) GradeByStudentID(ctx context.Context, grade *models.Grade) error {
-	return nil
-}

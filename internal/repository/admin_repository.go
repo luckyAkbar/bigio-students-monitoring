@@ -83,7 +83,3 @@ func (r *adminRepository) CreateStudent(ctx context.Context, teacher *models.Stu
 
 	return err
 }
-
-func (r *adminRepository) CreateSubject(ctx context.Context, teacher *models.Subject) error {
-	return nil
-}
